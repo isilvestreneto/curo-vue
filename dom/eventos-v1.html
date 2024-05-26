@@ -3,17 +3,24 @@
 <div id="app">
     <h1>{{ contador }}</h1>
     <button v-on:click="somar">Somar um</button>
+    <p v-on:mousemove="atualizarXY">Mouse: {{ x }} e {{ y }}</p>
 </div>
 
 <script>
     new Vue({
         el: '#app',
         data: {
-            contador: 1
+            contador: 1,
+            x: 0,
+            y: 0
         },
         methods: {
-            somar () {
+            somar (event) {
                 this.contador++;
+            },
+            atualizarXY (event) {
+                this.x = event.clientX;
+                this.y = event.clientY;
             }
         }
     });
